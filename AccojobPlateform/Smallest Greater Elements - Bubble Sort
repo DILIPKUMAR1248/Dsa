@@ -1,0 +1,57 @@
+import java.util.*;
+
+public class Main {
+
+    public static int[] smallestGreater(int[] arr) {
+        int n = arr.length;
+
+        // Step 1: copy array
+        int[] sorted = Arrays.copyOf(arr, n);
+
+        // Step 2: Bubble Sort
+        for(int i = 0; i < n - 1; i++) {
+            for(int j = 0; j < n - i - 1; j++) {
+                if(sorted[j] > sorted[j + 1]) {
+                    int temp = sorted[j];
+                    sorted[j] = sorted[j + 1];
+                    sorted[j + 1] = temp;
+                }
+            }
+        }
+
+        int[] res = new int[n];
+
+        // Step 3: find smallest greater
+        for(int i = 0; i < n; i++) {
+            int ans = -10000000;
+
+            for(int j = 0; j < n; j++) {
+                if(sorted[j] > arr[i]) {
+                    ans = sorted[j];
+                    break;
+                }
+            }
+
+            res[i] = ans;
+        }
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int[] res = smallestGreater(arr);
+
+        for(int x : res) {
+            System.out.print(x + " ");
+        }
+    }
+}

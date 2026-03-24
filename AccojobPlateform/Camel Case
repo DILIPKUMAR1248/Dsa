@@ -1,0 +1,37 @@
+import java.util.*;
+
+class Main {
+
+  public static void main(String args[]) {
+    Scanner sc = new Scanner(System.in);
+    int t = sc.nextInt();
+    while (t-- > 0) {
+      String s = sc.next();
+      camelCase(s);
+      System.out.println(); 
+      
+    }
+  }
+
+  static void camelCase(String s) {
+    // your code here
+    boolean toUpper=false;
+    StringBuilder str=new StringBuilder();
+
+    for(int i=0;i<s.length();i++){
+      char ch=s.charAt(i);
+
+      if(ch=='_'){
+        toUpper=true;
+      }else{
+        if(toUpper){
+          str.append(Character.toUpperCase(ch));
+          toUpper=false;
+        }else{
+          str.append(ch);
+        }
+      }
+    }
+    System.out.print(str.toString());
+  }
+}

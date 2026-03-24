@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static int isPalindrome(String str)
+      {
+              //write code here
+     str = str.replaceAll("[^a-zA-Z]", "").toLowerCase();
+
+    int left = 0;
+    int right = str.length() - 1;
+
+    while (left < right) {
+        if (str.charAt(left) != str.charAt(right)) {
+            return 0;
+        }
+        left++;
+        right--;
+    }
+
+    return 1;
+
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str=sc.nextLine();
+        int result = isPalindrome(str);
+        System.out.println(result);        
+    }
+}

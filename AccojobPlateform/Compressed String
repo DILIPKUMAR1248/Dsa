@@ -1,0 +1,39 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static void compressedString(String s) {
+        
+         // write your code here
+         StringBuilder str=new StringBuilder();
+        
+         int i=0;
+         while(i<s.length()){
+            int j=i;
+            int count=0;
+            while(j<s.length() && s.charAt(i)==s.charAt(j)){
+                count++;
+                j++;
+            }
+                str.append(s.charAt(i));
+                if(count>1){
+                    str.append(count);
+                }
+                i=j;
+
+           }
+           System.out.print(str.toString());
+         
+    }
+    
+    public static void main(String[] args) throws IOException {
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+        int t=Integer.parseInt(br.readLine());
+        while(t-- > 0){
+            String s = br.readLine();
+            compressedString(s);
+            System.out.println();
+        }
+    }
+}
+

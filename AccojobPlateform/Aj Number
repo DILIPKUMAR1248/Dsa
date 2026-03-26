@@ -1,0 +1,47 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner input = new Scanner(System.in);
+        int n=input.nextInt();
+        input.nextLine();
+        StringBuilder str=new StringBuilder(input.nextLine());
+        
+        solve(str,n);
+
+        input.close();
+    }
+    static boolean  check_aj(long num){
+    	if(num==0 || num==1)
+    		return false;
+    	int arr[]={2,3,5,7,11,13,17,19,23,29 };
+    	for(int i=0;i<10;i++)
+    		if(arr[i]==num)
+    			return true;
+    	for(int i=0;i<10;i++)
+    		if(num%arr[i]==0)
+    			return false;
+    	return true;
+    }
+	static boolean isVisted(boolean visted[],int start,int end){
+    	for(int i=start;i<end;i++)
+    		if(visted[i])
+    			return false;
+    	return true;
+    }
+    public static void solve(StringBuilder str,int n){
+        // WRITE YOUR CODE HERE
+         boolean visted[]=new boolean[100];
+    	int count=0;
+    	for(int i=1;i<=n;i++){
+    		for(int j=0;j<=n-i;j++){
+    			if(check_aj(Long.parseLong(str.substring(j,i+j))) && isVisted(visted,j,i+j) ){
+    				count++;
+    				for(int k=j;k<i+j;k++)
+    					visted[k]=true;
+    			}
+    		}
+    
+    	}
+        System.out.println(count);
+    }
+}

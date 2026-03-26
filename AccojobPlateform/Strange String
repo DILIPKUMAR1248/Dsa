@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static String strangeString(int n) {
+        //Write your code here
+        char[] res=new char[n];
+        int left=(n-1)/2,right=left+1;
+        for(int i=0;i<n;i++){
+            char ch=(char)('a'+(i%26));
+            if(i%2==0){
+                res[left--]=ch;
+            }else{
+                res[right++]=ch;
+            }
+        }
+        String ans=new String(res);
+
+        return ans;
+        
+
+
+    }
+    
+    public static void main(String args[]) {
+        Scanner input = new Scanner(System.in);
+        int t = input.nextInt();
+        while (t-- > 0){
+            int n = input.nextInt();
+            System.out.println(strangeString(n));
+        }
+    }
+}

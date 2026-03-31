@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+    public static int count=0;
+    public static void countMazePath1(int sr,int dr,int n,int m){
+        if(sr==m-1 && dr==n-1){
+            count++;
+            return;
+        }
+        if(sr>m || dr>n){
+            return;
+        }
+        countMazePath1(sr+1,dr,n,m);
+        countMazePath1(sr,dr+1,n,m);
+
+    }
+    static int countMazePath(int n, int m)
+    {
+        //Write your code here
+        
+        countMazePath1(0,0,n,m);
+        return count;
+    }
+	public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        int m, n;
+        n = sc.nextInt();
+        m = sc.nextInt();
+        System.out.println(countMazePath(n, m));
+    }
+}

@@ -1,0 +1,25 @@
+class Solution {
+    static List<Integer> firstNegInt(int arr[], int k) {
+        // write code here
+        ArrayList<Integer> result=new ArrayList<>();
+        int n=arr.length;
+        Queue<Integer> q=new LinkedList<>();
+        for(int i=0;i<n;i++){
+            if(arr[i]<0){
+                q.add(i);  //index store hai    [0,3]
+            }
+        }
+        for(int i=0;i<n-k+1;i++){
+            
+            while(q.size()>0 && q.peek()<i){
+                q.remove();
+            }
+            if(q.size()>0 && q.peek()<=i+k-1){
+                result.add(arr[q.peek()]);
+            }else{
+                result.add(0);
+            }
+        }
+        return result;
+    }
+}
